@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Zenz Pick Your File</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-wrapper">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-brand">Zenz<span class="brand-accent">Files</span></div>
+            <div class="nav-links">
+                <button class="nav-btn active" data-page="store">File</button>
+                <button class="nav-btn" data-page="profile">Profil</button>
+            </div>
+        </nav>
+
+        <!-- Page: Store -->
+        <div id="storePage" class="page active">
+            <div class="store-container">
+                <div class="header">
+                    <h1>Zenz Pick Your File</h1>
+                    <p>Ambil file digital kamu dengan kode akses</p>
+                </div>
+
+                <div class="products-section">
+                    <h2 class="section-title">Koleksi File</h2>
+                    <div class="product-grid" id="productGrid"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page: Profile -->
+        <div id="profilePage" class="page">
+            <div class="profile-container">
+                <div class="profile-card">
+                    <div class="profile-avatar">
+                        <img id="profileAvatar" src="https://placehold.co/200x200/1a1e26/5a7a8a?text=Avatar" alt="Avatar">
+                    </div>
+                    <div class="profile-info">
+                        <h2 id="profileName">Nama Admin</h2>
+                        <div class="profile-bio" id="profileBio">
+                            Deskripsi tentang pemilik website...
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <span id="adminAccessBtn" class="admin-trigger">ZP-YF</span>
+        </div>
+    </div>
+
+    <button id="waFloatBtn" class="wa-float-btn">
+        <span>WA</span>
+    </button>
+
+    <!-- Modal untuk masukin kode akses -->
+    <div id="codeModal" class="code-modal">
+        <div class="modal-box">
+            <h3 id="modalProductName">Masukkan Kode Akses</h3>
+            <p class="modal-desc">Kode akan expired dalam <span id="expiryTime">5</span> menit</p>
+            <input type="text" id="accessCodeInput" class="secret-input" placeholder="Kode akses" autocomplete="off">
+            <button id="submitCodeBtn" class="verify-btn">Verifikasi & Download</button>
+            <button id="closeCodeModal" class="close-modal-btn">Batal</button>
+        </div>
+    </div>
+
+    <!-- Modal Admin Login -->
+    <div id="secretModal" class="secret-modal">
+        <div class="modal-box">
+            <h3>Akses Admin</h3>
+            <input type="password" id="secretInput" class="secret-input" placeholder="Kode akses admin">
+            <button id="verifySecretBtn" class="verify-btn">Verifikasi</button>
+        </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div id="adminPanel" class="admin-panel">
+        <div class="admin-panel-header">
+            <h2>Admin Panel</h2>
+            <button id="closeAdminBtn">Tutup</button>
+        </div>
+        <div class="admin-tabs">
+            <button class="tab-btn active" data-tab="products">Produk</button>
+            <button class="tab-btn" data-tab="profile">Profil Admin</button>
+            <button class="tab-btn" data-tab="settings">Pengaturan</button>
+        </div>
+
+        <div id="productsTab" class="tab-panel active">
+            <div class="item-list" id="adminProductList"></div>
+            <button id="addProductBtn" class="admin-action-btn">+ Tambah File</button>
+        </div>
+
+        <div id="profileTab" class="tab-panel">
+            <div class="form-row">
+                <label>Foto Profil</label>
+                <input type="file" id="profileAvatarInput" accept="image/*">
+                <div class="avatar-preview">
+                    <img id="adminAvatarPreview" src="https://placehold.co/200x200/1a1e26/5a7a8a?text=Avatar">
+                </div>
+            </div>
+            <div class="form-row">
+                <label>Nama</label>
+                <input type="text" id="adminNameInput" placeholder="Nama admin">
+            </div>
+            <div class="form-row">
+                <label>Deskripsi / Bio</label>
+                <textarea id="adminBioInput" rows="4" placeholder="Deskripsi tentang pemilik website..."></textarea>
+            </div>
+            <button id="saveProfileBtn" class="admin-save-btn">Simpan Profil</button>
+        </div>
+
+        <div id="settingsTab" class="tab-panel">
+            <div class="form-row">
+                <label>Nomor WhatsApp Admin (format 628xxx)</label>
+                <input type="text" id="waNumberInput" placeholder="6281234567890">
+            </div>
+            <div class="form-row">
+                <label>Kode Akses Admin</label>
+                <input type="text" id="adminSecretInput" placeholder="zenzkece2434">
+            </div>
+            <div class="form-row">
+                <label>Masa berlaku kode (menit)</label>
+                <input type="number" id="codeExpiryMinutes" placeholder="5" min="1" max="60">
+            </div>
+            <button id="saveSettingsBtn" class="admin-save-btn">Simpan Pengaturan</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
